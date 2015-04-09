@@ -1,8 +1,10 @@
 # ntt2ntt
 A pipeline for clustering spikes in Neuralynx ntt files using python, MClust and KlustaKwick!
-Usage:
-      ./pipe /path/to/data/
 
+Usage:
+```bash
+      ./pipe /path/to/data/
+```
 # List of Files:
 
 * kkRunner.sh, a bash script for running KlustaKwik on all TTs in parallel.
