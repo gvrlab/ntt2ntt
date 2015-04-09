@@ -54,7 +54,8 @@ if len(sys.argv) > 1:
 cluList = []
 if os.path.isdir(path):
     #nttList = [ item for item in trees.locate('*.ntt', path)]          
-    cluList = [item for item in locate('*.clu.*', path)]        
+    cluList = [item for item in locate('*.clu.*', path)]
+    cluList = [item for item in cluList if item[1].find('.temp.') < 1]
     if len(cluList):
         print 'Loding Files...'
     else:
