@@ -40,21 +40,28 @@ def ChannelValidity(fileName):
     """
     A function to examine the data from different channels of a tetrode stored in Neuralynx ntt file.
     """ 
-    ntt = mmap_ntt_file(fileName)
-    RndIdx = np.random.randint(ntt.size-1,size=100)
-    sample = np.array(ntt['waveforms'][RndIdx])
-    chV = np.array([])
-    ChannelValidity = np.array([])
-    for item in sample:
-        chV = np.append(chV,np.array([item[:,ii].sum() for ii in range(4)]))
-    chV = chV.reshape(chV.size/4,4)
-    ChannelValidity = np.append(ChannelValidity,[chV[:,jj].sum() for jj in range(4)])
-    for ii in range(4):
-        if ChannelValidity[ii] > 10:
-            ChannelValidity[ii] = 1
-        else:
-            ChannelValidity[ii] = 0
-    return np.int0(ChannelValidity)
+    try:
+        ntt = mmap_ntt_file(fileName)
+        nttUp = True
+    except:
+        nttUp = False
+    if nttUp:
+        RndIdx = np.random.randint(ntt.size-1,size=100)
+        sample = np.array(ntt['waveforms'][RndIdx])
+        chV = np.array([])
+        ChannelValidity = np.array([])
+        for item in sample:
+            chV = np.append(chV,np.array([item[:,ii].sum() for ii in range(4)]))
+        chV = chV.reshape(chV.size/4,4)
+        ChannelValidity = np.append(ChannelValidity,[chV[:,jj].sum() for jj in range(4)])
+        for ii in range(4):
+            if ChannelValidity[ii] > 10:
+                ChannelValidity[ii] = 1
+            else:
+                ChannelValidity[ii] = 0
+        return np.int0(ChannelValidity)
+    else:
+        return np.int0([0,0,0,0])
 
 #########################################################
 if len(sys.argv) > 1:
