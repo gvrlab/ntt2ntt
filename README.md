@@ -14,7 +14,7 @@ Usage:
 
 * Keep in mind that you need to make files executable before being able to run them ( chmod +x foo.sh) and probably correct the path to your python for .py files.
 * You can also run different scripts sepaprately. For example, one can do :
-'''
+```bash
         $ ./nttWriter.py /path/to/data
-'''
+```
 in order to write cluster information (.clu) to .ntt files.
