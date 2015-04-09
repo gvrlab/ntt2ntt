@@ -42,10 +42,10 @@ def ChannelValidity(fileName):
     """ 
     try:
         ntt = mmap_ntt_file(fileName)
-        nttUp = True
+        #nttUp = True
     except:
-        nttUp = False
-    if nttUp:
+        #nttUp = False
+    if ntt.size > 1:
         RndIdx = np.random.randint(ntt.size-1,size=100)
         sample = np.array(ntt['waveforms'][RndIdx])
         chV = np.array([])
