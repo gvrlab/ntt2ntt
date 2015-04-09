@@ -19,4 +19,4 @@ Usage:
 ```bash
         $ ./nttWriter.py /path/to/data
 ```
-in order to write cluster information (.clu) to .ntt files.
+in order to write cluster information (*.clu.n*) to *.ntt* files.
