@@ -55,7 +55,7 @@ def ChannelValidity(fileName):
         chV = chV.reshape(chV.size/4,4)
         ChannelValidity = np.append(ChannelValidity,[chV[:,jj].sum() for jj in range(4)])
         for ii in range(4):
-            if ChannelValidity[ii] > 10:
+            if np.abs(ChannelValidity)[ii] > 10:
                 ChannelValidity[ii] = 1
             else:
                 ChannelValidity[ii] = 0
